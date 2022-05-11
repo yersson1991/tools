@@ -1,0 +1,14 @@
+{
+  "appId": "com.tools.app",
+  "appName": "Tools",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {},
+  "plugins": {
+    "SplashScreen": {
+      "backgroundColor": "#000000"
+    }
+  },
+  "linuxAndroidStudioPath": "/var/lib/flatpak/app/com.google.AndroidStudio/current/b0a7cb9be3d0a456c3def516e364eb74db70b1cdc69a6dffffdc5ce2a2e2391d/files/extra/android-studio/bin/studio.sh"
+}

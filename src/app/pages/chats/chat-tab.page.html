@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentPopover($event)">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>  
+    <ion-title>Chats</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ng-template [ngIf]="chats?.length > 0" [ngIfElse]="emptyChats">
+    <ion-list class="products-list ion-padding-end">
+      <ion-item *ngFor="let chat of chats" (click)="openChat(chat.idUser)">
+        <ion-avatar slot="start">
+          <img 
+          [src]="chat.photoURL 
+            ? chat.photoURL
+            : '/assets/img/avatar.png'"
+          >
+        </ion-avatar>
+        <ion-label>
+          <h4>{{chat.displayName | titlecase }}</h4>
+          <p>{{chat.messages[chat.messages.length - 1].text}}</p>
+        </ion-label>
+        <ion-badge
+          slot="end">{{chat.messages[chat.messages.length - 1].createdAt | formatTime }}
+        </ion-badge>
+      </ion-item>
+    </ion-list>
+   </ng-template>
+   <ng-template #emptyChats>
+    <div>No ha iniciado una conversación...</div>
+   </ng-template>
+</ion-content>

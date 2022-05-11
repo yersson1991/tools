@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentPopover($event)">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>  
+    <ion-title>Cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="page-content" *ngIf="user">
+    <div class="page-avatar">
+      <ion-avatar>
+        <img [src]="user.photoURL ? user.photoURL : 'assets/img/avatar.png'" alt="">
+      </ion-avatar>
+    </div>
+    <ion-text>
+      <h4>{{user.displayName}}</h4>
+    </ion-text>
+    <ion-button fill="outline" (click)="logout()">
+      Cerrar sesión
+    </ion-button>
+  </div>
+</ion-content>

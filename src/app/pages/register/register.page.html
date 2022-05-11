@@ -1,0 +1,90 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="register-page ion-padding">
+    <div class="form-content">
+      <form novalidate class="register-form" [formGroup]="form">
+        <div class="form-field">
+          <ion-item>
+            <ion-label class="field" position="stacked">Nombre
+              <span class="required">*</span>
+            </ion-label>
+            <ion-input class="ion-text-capitalize" type="text" formControlName="firstName"></ion-input>
+          </ion-item>
+          <div *ngIf="firstNameField.errors && firstNameField.touched">
+            <ion-text class="form-error" color="danger" *ngIf="firstNameField.hasError('required')">
+                <ion-icon name="alert-circle-outline"></ion-icon>
+                <span>Este campo es requerido</span>
+            </ion-text>
+          </div>
+        </div>
+        <div class="form-field">
+          <ion-item>
+            <ion-label class="field" position="stacked">Apellido
+              <span class="required">*</span>
+            </ion-label>
+            <ion-input class="ion-text-capitalize" type="text" formControlName="lastName"></ion-input>
+          </ion-item>
+          <div *ngIf="lastNameField.errors && lastNameField.touched">
+            <ion-text class="form-error" color="danger" *ngIf="lastNameField.hasError('required')">
+                <ion-icon name="alert-circle-outline"></ion-icon>
+                <span>Este campo es requerido</span>
+            </ion-text>
+          </div>
+        </div>
+        <div class="form-field">
+          <ion-item>
+            <ion-label class="field" position="stacked">Email
+              <span class="required">*</span>
+            </ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+          </ion-item>
+          <div *ngIf="emailField.errors && emailField.touched">
+            <ion-text class="form-error" color="danger" *ngIf="emailField.hasError('required')">
+                <ion-icon name="alert-circle-outline"></ion-icon>
+                <span>Este campo es requerido</span>
+            </ion-text>
+            <ion-text class="form-error" color="danger" *ngIf="emailField.hasError('pattern')">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+              <span>Email inválido</span>
+            </ion-text>
+          </div>
+        </div>
+        <div class="form-field">
+          <ion-item>
+            <ion-label class="field" position="stacked">Contraseña
+              <span class="required">*</span>
+            </ion-label>
+            <ion-input type="password" formControlName="pass"></ion-input>
+          </ion-item>
+          <div *ngIf="passField.errors && passField.touched">
+            <ion-text class="form-error" color="danger" *ngIf="passField.hasError('required')">
+                <ion-icon name="alert-circle-outline"></ion-icon>
+                <span>Este campo es requerido</span>
+            </ion-text>
+            <ion-text class="form-error" color="danger" *ngIf="passField.hasError('minlength')">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+              <span>Longitud invalidad</span>
+            </ion-text>
+          </div>
+        </div>
+        <ion-button
+          (click)="createUser()"
+          class="register-button" 
+          expand="block" 
+          fill="outline">Crear cuenta</ion-button>
+          <ion-text class="form-error" color="danger" *ngIf="authService.errorMessage">
+            <ion-icon name="alert-circle-outline"></ion-icon>
+            <span>El email se encuentra en uso</span>
+          </ion-text>
+      </form>
+    </div>
+  </div>
+</ion-content>
+

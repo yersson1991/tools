@@ -1,0 +1,33 @@
+<ion-header  class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color='primary' (click)="startApp()" [hidden]="!showSkip">Skip</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ion-slides 
+    #slides 
+    (ionSlideWillChange)="onSlideChangeStart($event)"
+    pager={true}>
+    <ion-slide class="slide">
+      <h2>Tools</h2>
+      <img src="assets/img/slide1.svg" alt="">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/img/slide2.svg" alt="">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+    </ion-slide>
+    <ion-slide>
+      <img class="slide3" src="assets/img/slide3.svg" alt="">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+      <ion-button fill="clear" (click)="startApp()">
+        Continuar
+        <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
+

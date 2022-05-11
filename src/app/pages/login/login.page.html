@@ -1,0 +1,85 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="login-page ion-padding">
+    <div class="form-content">
+      <form novalidate class="login-form" [formGroup]="form" (ngSubmit)="emailAndPasswordLogin($event)">
+        <div class="form-field">
+          <ion-item>
+            <ion-label class="field" position="stacked">
+              Correo: <span class="required">*</span>
+            </ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+          </ion-item>
+          <div *ngIf="emailField.errors && emailField.touched">
+            <ion-text class="form-error" color="danger" *ngIf="emailField.hasError('required')">
+                <ion-icon name="alert-circle-outline"></ion-icon>
+                <span>Este campo es requerido</span>
+            </ion-text>
+            <ion-text class="form-error" color="danger" *ngIf="emailField.hasError('pattern')">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+                <span>Este campo es requerido</span>
+            </ion-text>
+          </div>
+        </div>
+        <div class="form-field">
+          <ion-item>
+            <ion-label class="field" position="stacked">Contraseña<span class="required">*</span></ion-label>
+            <ion-input type="password" formControlName="pass"></ion-input>
+          </ion-item>
+          <div *ngIf="passwordField.errors && passwordField.touched">
+            <ion-text class="form-error" color="danger" *ngIf="passwordField.hasError('required')">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+              <span>Este campo es requerido</span>
+            </ion-text>
+            <ion-text class="form-error" color="danger" *ngIf="passwordField.hasError('minlength')">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+              <span>Este campo es requerido</span>
+            </ion-text>
+          </div>
+        </div>
+        <ion-button 
+          type="submit" 
+          class="login-button"
+          expand="block"
+          fill="outline">Iniciar Sesión</ion-button>
+        <ion-text class="form-error" color="danger" *ngIf="authService.errorMessage">
+          <ion-icon name="alert-circle-outline"></ion-icon>
+          <span>Usuario o contraseña invalido</span>
+        </ion-text>
+      </form>
+      
+      <div class="login-forgot">
+        <ion-text class="forgot-text ion-text-center" color="primary">
+          <p (click)="presentModal()">Recuperar contraseña</p>
+        </ion-text>
+      </div>
+
+      <ion-grid class="login-social">
+        <ion-row>
+          <ion-col class="social-item">
+            <ion-button (click)="facebookLogin()">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col class="social-item">
+            <ion-button (click)="googleLogin()">
+              <ion-icon name="logo-google"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <div class="login-register">
+        <ion-text class="register-text ion-text-center">
+          <h4>Registrese <span [routerLink]="['/register']">aqui</span></h4>
+        </ion-text>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="map">
+      <ion-icon name="map-outline"></ion-icon>
+      <ion-label>Mapa</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="chats">
+      <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+      <ion-label>Chat</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="account">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>Cuenta</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+
+<ion-content class="ion-padding" *ngIf="!emailVerified">
+  <div class="page-content">
+    <div class="email-verified">
+      <ion-text *ngIf="sendEmail">
+        <span>Mensaje enviado</span>
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+      </ion-text>
+      <ion-text *ngIf="!sendEmail">
+        <span>Debe validar el email</span>
+        <ion-icon name="mail-outline"></ion-icon>
+      </ion-text>
+      <div class="email-verified-buttons">
+        <ion-button class="email-verified-btn" (click)="sendVerificationEmail()">
+          Enviar
+        </ion-button>
+        <ion-button (click)="refresh()">
+          Actualizar
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

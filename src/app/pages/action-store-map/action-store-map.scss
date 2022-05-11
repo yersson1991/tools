@@ -1,0 +1,40 @@
+* {
+  font-family: Abel;
+}
+.modal-container {
+  position: relative;
+
+  .modal-actions {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding-right: .6rem;
+
+    ion-button {
+      --padding-start: 5px;
+      --padding-end: 5px;
+    }
+  }
+}
+
+.modal-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-info {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  .modal-avatar {
+    margin: 0 1rem;
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+  }
+
+  .modal-text {
+    text-align: center;
+  }
+}

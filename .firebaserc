@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "tools-6426f": {
+      "hosting": {
+        "app": [
+          "tools-6426f"
+        ]
+      }
+    }
+  }
+}

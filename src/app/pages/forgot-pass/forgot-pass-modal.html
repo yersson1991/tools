@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{modalTitle}}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="dismiss()">
+        {{modalCloseBtnText}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <form novalidate [formGroup]="formModal">
+    <div class="form-field">
+      <ion-item>
+        <ion-label position="stacked" class="field">
+          {{emailText}} <span class="required">*</span>
+        </ion-label>
+        <ion-input type="email" formControlName="emailModal"></ion-input>
+      </ion-item>
+      <div *ngIf="emailModalField.errors && emailModalField.touched">
+        <ion-text class="form-error" color="danger" *ngIf="emailModalField.hasError('required')">
+          <ion-icon name="alert-circle-outline"></ion-icon>
+          <span>{{requiredFieldErrorText}}</span>
+        </ion-text>
+        <ion-text class="form-error" color="danger" *ngIf="emailModalField.hasError('pattern')">
+          <ion-icon name="alert-circle-outline"></ion-icon>
+          <span>{{emailInvalidErrorText}}</span>
+        </ion-text>
+      </div>
+    </div>
+    <ion-button class="ion-margin-top" type="submit" (click)="sendEmail($event)" expand="block" fill="outline">
+      {{modalSendBtnText}}
+    </ion-button>
+  </form>
+</ion-content>

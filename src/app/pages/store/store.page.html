@@ -1,0 +1,73 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons *ngIf="!storeOwner" slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="storeOwner" slot="end">
+      <ion-button (click)="presentPopover($event)">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Tienda</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" *ngIf="!isLoading">
+  <div class="not-store" *ngIf="!store">
+    <p>Ingrese los productos de la tienda</p>
+    <ion-button routerLink="/form-store" fill="outline">
+      <ion-icon slot="start" name="clipboard-outline"></ion-icon>
+      Click
+    </ion-button>
+  </div>
+  <div class="page-store" *ngIf="store">
+    <div class="store-img">
+      <ion-avatar>
+        <img src="assets/img/slide3.svg" alt="">
+      </ion-avatar>
+      <h2>{{store.name}}</h2>
+    </div>
+    <div class="store-info">
+      <div class="info-content">
+        <ion-text>
+          <ion-icon name="person-outline"></ion-icon>
+          <ion-label>{{store.owner | titlecase }}</ion-label>
+        </ion-text>
+        <ion-text>
+          <ion-icon name="location-outline"></ion-icon>
+          <ion-label>{{store.address}}</ion-label>
+        </ion-text>
+        <ion-text class="cell" *ngIf="store.cellPhone">
+          <ion-icon name="phone-portrait-outline"></ion-icon>
+          <ion-label>{{store.cellPhone}}</ion-label>
+        </ion-text>
+        <ion-text class="ion-margin-start phone" *ngIf="store.localPhone">
+          <ion-icon name="call-outline"></ion-icon>
+          <ion-label>{{store.localPhone}}</ion-label>
+        </ion-text>
+      </div>
+    </div>
+
+    <ion-list *ngIf="products" class="products-list ion-padding-end">
+      <ion-item *ngFor="let product of products">
+        <ion-avatar slot="start">
+          <img 
+          [src]="product.photoURL 
+            ? product.photoURL
+            : '/assets/img/tools.svg'"
+          >
+        </ion-avatar>
+        <ion-label>
+          <h3 class="product-title">{{product.name}}</h3>
+          <p class="product-info">{{product.quantity}} unidad(es)- {{product.price | currency:'COP'}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <ion-fab *ngIf="storeOwner && store" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/form-product">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

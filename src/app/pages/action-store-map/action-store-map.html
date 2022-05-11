@@ -1,0 +1,77 @@
+<div class="modal-container">
+  <div class="modal-content">
+    <div class="modal-btn">
+      <ion-button fill="clear" (click)="dismiss()" *ngIf="closeBtnText">
+        {{closeBtnText}}
+      </ion-button>
+    </div>
+    <div class="modal-info" *ngIf="store">
+      <ion-avatar class="modal-avatar">
+        <img [src]="store.photoURL ? store.photoURL : '/assets/img/slide3.svg'" alt="">
+      </ion-avatar>
+      <ion-text class="modal-text">
+        <h4>{{store.name | titlecase}}</h4>
+      </ion-text>
+    </div>
+    <div class="modal-actions">
+      <ion-button (click)="openStore()" fill="clear" class="custom-modal-btn">
+        <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="openChat()" fill="clear" class="custom-modal-btn">
+        <ion-icon slot="icon-only" name="chatbox-ellipses-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <div class="form-content">
+      <form novalidate [FormGroup]="form">
+        <div>
+          <div class="form-field">
+            <ion-item>
+              <ion-label class="field" position="stacked">Nombre
+                <span class="required">*</span>
+              </ion-label>
+              <ion-input class="ion-text-capitalize" type="text" formControlName="name"></ion-input>
+            </ion-item>
+            <div *ngIf="nameField.errors && nameField.touched">
+              <ion-text class="form-error" color="danger" *ngIf="nameField.hasError('required')">
+                  <ion-icon name="alert-circle-outline"></ion-icon>
+                  <span>campo requerido</span>
+              </ion-text>
+            </div>
+          </div>
+          <div class="form-field">
+            <ion-item>
+              <ion-label class="field" position="stacked">Precio
+                <span class="required">*</span>
+              </ion-label>
+              <ion-input class="ion-text-capitalize" type="number" formControlName="price"></ion-input>
+            </ion-item>
+            <div *ngIf="priceField.errors && priceField.touched">
+              <ion-text class="form-error" color="danger" *ngIf="priceField.hasError('required')">
+                  <ion-icon name="alert-circle-outline"></ion-icon>
+                  <span>campo requerido</span>
+              </ion-text>
+            </div>
+          </div>
+          <div class="form-field">
+            <ion-item>
+              <ion-label class="field" position="stacked">Cantidad
+                <span class="required">*</span>
+              </ion-label>
+              <ion-input class="ion-text-capitalize" type="text" formControlName="quantity"></ion-input>
+            </ion-item>
+            <div *ngIf="quantityField.errors && quantityField.touched">
+              <ion-text class="form-error" color="danger" *ngIf="quantityField.hasError('required')">
+                  <ion-icon name="alert-circle-outline"></ion-icon>
+                  <span>campo requerido</span>
+              </ion-text>
+            </div>
+          </div>
+          <ion-button expand="block" fill="outline" class="form-product-button ion-margin-top" (click)="saveProduct()" type="submit">
+            Guardar
+          </ion-button>
+        </div>
+      </form> 
+    </div>
+  </div>
+</div>

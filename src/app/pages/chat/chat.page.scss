@@ -1,0 +1,69 @@
+* {
+  font-family: Abel;
+}
+.page-content {
+  background-color: var(--ion-color-light);
+  height: 100%;
+
+  .message {
+    display: table;
+    margin: 0;
+    background-color: #bbf6d3;
+    padding: .5rem 1rem;
+    margin: 1rem;
+    border-radius: .4rem;
+    font-size: 1.2rem;
+    max-width: 280px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+    small {
+      display: block;
+      font-size: .8rem;
+      color: var(--ion-color-medium);
+      text-shadow: 0px 0px 1px rgba(0, 0, 0, .2);
+      text-align: right;
+    }
+  }
+  .message:first-child {
+    margin-top: 0;
+  }
+
+  .message-user {
+    display: flex;
+    justify-content: flex-end;
+    .message {
+      background-color: #b2e4fb;
+    }
+  }
+}
+
+.avatar {
+  float: left;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+}
+
+ion-title {
+  padding-left: 10px;
+}
+
+.chat-send {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+
+  .send-content {
+    display: flex;
+    border: 1px solid #DDD;
+    background-color: #FFF;
+    border-radius: .4rem;
+  }
+
+  ion-textarea {
+    min-height: 80px;
+    margin: 0 0 0 .5rem;
+  }
+}

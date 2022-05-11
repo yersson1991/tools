@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+      <img 
+        class="avatar"
+        *ngIf="userReceiver" 
+        [src]="userReceiver.photoURL ? userReceiver.photoURL : '/assets/img/avatar.png'" 
+        alt="">
+    <ion-title *ngIf="userReceiver">
+      {{ userReceiver.displayName | titlecase }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="page-content ion-padding-top">
+    <div *ngFor="let message of messages" [ngClass]="{ 'message-user': message.idSender === user.uid }">
+      <p class="message">{{message.text}}
+        <small>{{message.createdAt | formatTime }}</small>
+      </p>
+    </div>
+  </div>
+
+  <div class="chat-send">
+    <div class="send-content">
+      <ion-textarea
+      [formControl]="messageCtrl"
+      [placeholder]="writeMessageText"
+      ></ion-textarea>
+      <ion-button [disabled]="!messageCtrl.valid" fill="clear" (click)="sendMessage()">
+        <ion-icon slot="icon-only" name="send"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

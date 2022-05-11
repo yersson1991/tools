@@ -1,0 +1,16 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentPopover($event)">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>  
+    <ion-title>{{titleText}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="stores">
+  <stores-map 
+    [stores]="stores" 
+    [currentLatitude]="currentLatitude" 
+    [currentLongitude]="currentLongitude"></stores-map>
+</ion-content>
